@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bongo Cat - p5.js</title>
+  
+  <!-- Carregamento da biblioteca p5.js e p5.sound -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+  
+  <!-- Carregamento do seu estilo e da lógica do jogo -->
+  <link rel="stylesheet" href="style.css">
+  <script src="sketch.js"></script>
+</head>
+<body>
+  <main class="app">
+    <!-- MODIFICADO: área do jogo para manter o canvas separado do guia de teclas. -->
+    <section id="game" class="game" aria-label="Jogo Bongo Cat"></section>
+
+    <!-- MODIFICADO: guia com todas as teclas mapeadas no código; botões funcionam por toque. -->
+    <section class="lesson-card" aria-labelledby="lesson-title">
+      <p class="lesson-label">GUIA DE TECLAS</p>
+      <h1 id="lesson-title">Como tocar</h1>
+      <p class="lesson-description">
+        Aperte uma tecla no computador ou toque na caixinha correspondente.
+      </p>
+
+      <div class="instrument-guide">
+        <section class="instrument-group" aria-labelledby="bongo-label">
+          <h2 id="bongo-label">Bongô</h2>
+          <div class="key-guide">
+            <button class="key-button" type="button" data-instrument-key="A"
+                    aria-label="Tocar bongô com a pata esquerda, tecla A" aria-pressed="false">
+              <span class="keycap">A</span>
+            </button>
+            <button class="key-button" type="button" data-instrument-key="D"
+                    aria-label="Tocar bongô com a pata direita, tecla D" aria-pressed="false">
+              <span class="keycap">D</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="instrument-group" aria-labelledby="cymbal-label">
+          <h2 id="cymbal-label">Prato</h2>
+          <div class="key-guide">
+            <button class="key-button" type="button" data-instrument-key="C"
+                    aria-label="Tocar prato, tecla C" aria-pressed="false">
+              <span class="keycap">C</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="instrument-group" aria-labelledby="tambourine-label">
+          <h2 id="tambourine-label">Pandeiro (tambourine)</h2>
+          <div class="key-guide">
+            <button class="key-button" type="button" data-instrument-key="B"
+                    aria-label="Tocar pandeiro, tecla B" aria-pressed="false">
+              <span class="keycap">B</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="instrument-group" aria-labelledby="cowbell-label">
+          <h2 id="cowbell-label">Cowbell</h2>
+          <div class="key-guide">
+            <button class="key-button" type="button" data-instrument-key="V"
+                    aria-label="Tocar cowbell, tecla V" aria-pressed="false">
+              <span class="keycap">V</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="instrument-group" aria-labelledby="keyboard-label">
+          <h2 id="keyboard-label">Teclado</h2>
+          <div class="key-guide key-guide-wide" aria-label="Teclas do teclado, de 1 a 0">
+            <button class="key-button" type="button" data-instrument-key="1"
+                    aria-label="Teclado, tecla 1" aria-pressed="false"><span class="keycap">1</span></button>
+            <button class="key-button" type="button" data-instrument-key="2"
+                    aria-label="Teclado, tecla 2" aria-pressed="false"><span class="keycap">2</span></button>
+            <button class="key-button" type="button" data-instrument-key="3"
+                    aria-label="Teclado, tecla 3" aria-pressed="false"><span class="keycap">3</span></button>
+            <button class="key-button" type="button" data-instrument-key="4"
+                    aria-label="Teclado, tecla 4" aria-pressed="false"><span class="keycap">4</span></button>
+            <button class="key-button" type="button" data-instrument-key="5"
+                    aria-label="Teclado, tecla 5" aria-pressed="false"><span class="keycap">5</span></button>
+            <button class="key-button" type="button" data-instrument-key="6"
+                    aria-label="Teclado, tecla 6" aria-pressed="false"><span class="keycap">6</span></button>
+            <button class="key-button" type="button" data-instrument-key="7"
+                    aria-label="Teclado, tecla 7" aria-pressed="false"><span class="keycap">7</span></button>
+            <button class="key-button" type="button" data-instrument-key="8"
+                    aria-label="Teclado, tecla 8" aria-pressed="false"><span class="keycap">8</span></button>
+            <button class="key-button" type="button" data-instrument-key="9"
+                    aria-label="Teclado, tecla 9" aria-pressed="false"><span class="keycap">9</span></button>
+            <button class="key-button" type="button" data-instrument-key="0"
+                    aria-label="Teclado, tecla 0" aria-pressed="false"><span class="keycap">0</span></button>
+          </div>
+        </section>
+
+        <section class="instrument-group" aria-labelledby="marimba-label">
+          <h2 id="marimba-label">Marimba</h2>
+          <div class="key-guide key-guide-wide" aria-label="Teclas da marimba, de Q a P">
+            <button class="key-button" type="button" data-instrument-key="Q"
+                    aria-label="Marimba, tecla Q" aria-pressed="false"><span class="keycap">Q</span></button>
+            <button class="key-button" type="button" data-instrument-key="W"
+                    aria-label="Marimba, tecla W" aria-pressed="false"><span class="keycap">W</span></button>
+            <button class="key-button" type="button" data-instrument-key="E"
+                    aria-label="Marimba, tecla E" aria-pressed="false"><span class="keycap">E</span></button>
+            <button class="key-button" type="button" data-instrument-key="R"
+                    aria-label="Marimba, tecla R" aria-pressed="false"><span class="keycap">R</span></button>
+            <button class="key-button" type="button" data-instrument-key="T"
+                    aria-label="Marimba, tecla T" aria-pressed="false"><span class="keycap">T</span></button>
+            <button class="key-button" type="button" data-instrument-key="Y"
+                    aria-label="Marimba, tecla Y" aria-pressed="false"><span class="keycap">Y</span></button>
+            <button class="key-button" type="button" data-instrument-key="U"
+                    aria-label="Marimba, tecla U" aria-pressed="false"><span class="keycap">U</span></button>
+            <button class="key-button" type="button" data-instrument-key="I"
+                    aria-label="Marimba, tecla I" aria-pressed="false"><span class="keycap">I</span></button>
+            <button class="key-button" type="button" data-instrument-key="O"
+                    aria-label="Marimba, tecla O" aria-pressed="false"><span class="keycap">O</span></button>
+            <button class="key-button" type="button" data-instrument-key="P"
+                    aria-label="Marimba, tecla P" aria-pressed="false"><span class="keycap">P</span></button>
+          </div>
+        </section>
+      </div>
+
+      <p class="lesson-hint">As caixinhas também podem ser tocadas no celular ou tablet.</p>
+    </section>
+  </main>
+</body>
+</html>
